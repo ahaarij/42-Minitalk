@@ -6,64 +6,36 @@
 /*   By: ahaarij <ahaarij@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 13:25:29 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/21 13:29:48 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/01/22 09:07:53 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static int	ft_atoi(const char *str)
+static void	send_msg(int pid, char msg)
 {
-	long			result;
-	long			sign;
-	unsigned int	i;
-
-	sign = 1;
-	result = 0;
-	i = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	while (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	int	bit;
+	
 }
 
 static int	isstrdig(char *str)
 {
 	int	i;
-	i = 0;
-	while ()
-}
-
-char	*ft_strdup(const char *s1)
-{
-	unsigned int	j;
-	unsigned int	i;
-	char			*dest;
+	int	result;
 
 	i = 0;
-	j = ft_strlen(s1);
-	dest = (char *)malloc(sizeof(*dest) * (j + 1));
-	if (!dest)
-		return (NULL);
-	while (i < j)
+	result = 0;
+	while (str[i])
 	{
-		dest[i] = s1[i];
+		if (ft_isdigit(str[i]) == 1)
+			result = 1;
+		else
+			return (0);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (result);
 }
-// REMOVE STRDUP, PUT LIBFT!
+
 int	checkinput(int argc, char **argv)
 {
 	int	correct_input;
@@ -71,7 +43,13 @@ int	checkinput(int argc, char **argv)
 	correct_input = 0;
 	if (argc != 3)
 		ft_printf("%s\n", "Please use the correct format! ./client <PID> <Message>");
-	else if ()
+	else if (!isstrdig(argv[1]))
+		ft_printf("%s\n", "Wrong Format!, PID should only contain numbers!");
+	else if (argv[2] == 0)
+		ft_printf("%s\n", "Please input a non-empty message!");
+	else
+		correct_input = 1;
+	return (correct_input);
 }
 
 int	main(int argc, char **argv)
@@ -81,6 +59,14 @@ int	main(int argc, char **argv)
 	char *msg;
 	
 	i = 0;
-	pid = ft_atoi(argv[1]);
-	msg = ft_strdup(argv[2]);
+	if (checkinput(argc, argv) == 1)
+	{
+		pid = ft_atoi(argv[1]);
+		msg = ft_strdup(argv[2]);
+		while (msg[i] != '\0')
+		{
+			send_msg(pid, msg[i]);
+			i++;
+		}	
+	}
 }

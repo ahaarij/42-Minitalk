@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaarij <ahaarij@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 12:59:21 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/22 09:45:33 by ahaarij          ###   ########.fr       */
+/*   Created: 2023/11/25 15:47:48 by ahaarij           #+#    #+#             */
+/*   Updated: 2023/11/26 10:27:04 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <signal.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list	*hi;
+	t_list	*nextnode;
 
-#endif                                                                                 
+	if (lst == NULL || del == NULL)
+		return ;
+	hi = *lst;
+	while (hi)
+	{
+		nextnode = hi->next;
+		del(hi->content);
+		free(hi);
+		hi = nextnode;
+	}
+	*lst = NULL;
+}

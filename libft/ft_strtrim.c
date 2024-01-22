@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaarij <ahaarij@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 12:59:21 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/22 09:45:33 by ahaarij          ###   ########.fr       */
+/*   Created: 2023/11/12 16:43:28 by ahaarij           #+#    #+#             */
+/*   Updated: 2023/11/25 06:49:32 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <signal.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-#endif                                                                                 
+	if (s1 == NULL)
+		return (NULL);
+	i = 0;
+	j = ft_strlen(s1);
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i++;
+	while (j > i && ft_strchr(set, s1[j - 1]))
+		j--;
+	str = (char *)malloc(sizeof(char) * (j - i + 1));
+	if (str == NULL)
+		return (NULL);
+	ft_strlcpy(str, &s1[i], j - i + 1);
+	return (str);
+}
