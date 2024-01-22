@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	long			result;
 	long			sign;
@@ -37,6 +37,43 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
+static int	isstrdig(char *str)
+{
+	int	i;
+	i = 0;
+	while ()
+}
+
+char	*ft_strdup(const char *s1)
+{
+	unsigned int	j;
+	unsigned int	i;
+	char			*dest;
+
+	i = 0;
+	j = ft_strlen(s1);
+	dest = (char *)malloc(sizeof(*dest) * (j + 1));
+	if (!dest)
+		return (NULL);
+	while (i < j)
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+// REMOVE STRDUP, PUT LIBFT!
+int	checkinput(int argc, char **argv)
+{
+	int	correct_input;
+
+	correct_input = 0;
+	if (argc != 3)
+		ft_printf("%s\n", "Please use the correct format! ./client <PID> <Message>");
+	else if ()
+}
+
 int	main(int argc, char **argv)
 {
 	int	i;
@@ -44,5 +81,6 @@ int	main(int argc, char **argv)
 	char *msg;
 	
 	i = 0;
-	pid = ft_atoi(argv[1])	
+	pid = ft_atoi(argv[1]);
+	msg = ft_strdup(argv[2]);
 }

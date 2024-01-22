@@ -16,6 +16,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <signal.h>
-# include "/Users/ahaarij/Desktop/MiniTalk/ft_printf/ft_printf.h"
+# include "ft_printf/ft_printf.h"
 
 #endif
