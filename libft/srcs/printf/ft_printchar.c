@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
+/*   By: ahaarij <ahaarij@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 12:59:21 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/23 12:08:57 by ahaarij          ###   ########.fr       */
+/*   Created: 2023/12/01 13:30:37 by ahaarij           #+#    #+#             */
+/*   Updated: 2024/01/19 10:27:32 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "../../includes/libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <signal.h>
-# include "libft/includes/libft.h"
-# include <sys/types.h>
-
-#endif
+int	ft_printchar(int c)
+{
+	return (write(1, &c, 1));
+}
